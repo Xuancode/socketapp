@@ -21,6 +21,7 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
+// 创建io服务
 var io = require('socket.io')(server);
 /**
  * Listen on provided port, on all network interfaces.
@@ -30,6 +31,7 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
+// io监听连接
 io.on('connection', function (socket) {
   socket.emit('news', { hello: 'world' });
   socket.on('my other event', function (data) {

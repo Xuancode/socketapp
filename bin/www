@@ -3,10 +3,11 @@
 /**
  * Module dependencies.
  */
-
 var app = require('../app');
 var debug = require('debug')('socketapp:server');
 var http = require('http');
+var socket_io = require('../src/io');
+// console.log(io)
 
 /**
  * Get port from environment and store in Express.
@@ -22,7 +23,7 @@ app.set('port', port);
 var server = http.createServer(app);
 
 // 创建io服务
-var io = require('socket.io')(server);
+// var io = require('socket.io')(server);
 /**
  * Listen on provided port, on all network interfaces.
  */
@@ -30,14 +31,7 @@ var io = require('socket.io')(server);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
-
-// io监听连接
-io.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
-  });
-});
+socket_io(server)
 
 /**
  * Normalize a port into a number, string, or false.
@@ -98,3 +92,4 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+

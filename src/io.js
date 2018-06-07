@@ -8,6 +8,7 @@ function socket_io(server) {
       console.log(data);
     });
     global.socket = socket;
+    console.log(global.socket)
   });
   global.io = io;
 }

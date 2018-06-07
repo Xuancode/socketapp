@@ -5,7 +5,8 @@
  */
 var app = require('../app');
 var debug = require('debug')('socketapp:server');
-var http = require('http');
+var https = require('https');
+var fs = require('fs');
 var socket_io = require('../src/io');
 // console.log(io)
 
@@ -17,10 +18,18 @@ var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
- * Create HTTP server.
+ * Create HTTPS server.
  */
+console.log("只开启了https")
 
-var server = http.createServer(app);
+var options = {
+  key: fs.readFileSync('cert/214536363900997.key'),
+  cert: fs.readFileSync('cert/214536363900997.pem')
+};
+
+// var server = https.createServer(app);
+
+var server = https.createServer(options, app)
 
 // 创建io服务
 // var io = require('socket.io')(server);

@@ -4,13 +4,13 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <script src="https://cdn.bootcss.com/socket.io/2.0.4/socket.io.js"></script>
+  <!-- <script src="https://cdn.bootcss.com/socket.io/2.0.4/socket.io.js"></script> -->
 	<script>
-	  var socket = io.connect('http://localhost:3000');
-	  socket.on('123', function (data) {
-	    console.log(JSON.stringify(data));
-	    socket.emit('xiaoming', { my: 'data' });
-	  });
+	  // var socket = io.connect('http://localhost:3000');
+	  // socket.on('123', function (data) {
+	  //   console.log(JSON.stringify(data));
+	  //   socket.emit('xiaoming', { my: 'data' });
+	  // });
 	</script>
   <body>
     <h1><%= title %></h1>

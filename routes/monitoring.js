@@ -9,8 +9,6 @@ var router = express.Router();
 /* GET users listing. */
 router.post('/warningInfoUpdate', function(req, res, next) {
 	var projectCode = req.body.projectCode;
-  axios.get('https://xy-mind.com/').then(function(res){
-  })
   // res.send('respond with a resource');
   if (!projectCode) {
 	  res.status(500).json({ success: '参数无效' });

@@ -14,6 +14,7 @@ router.post('/warningInfoUpdate', function(req, res, next) {
   if (!projectCode) {
 	  res.status(500).json({ success: '参数无效' });
 	}else {
+    console.log(global.socket)
 		global.socket.emit(projectCode, { projectCode: projectCode, type: 'warning' });
 	  res.status(200).json({success: true, msg: '收到，发了就好小伙子。', data: null}  );
 	}
